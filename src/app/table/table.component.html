@@ -1,0 +1,61 @@
+<div class="container mx-auto">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-full mt-10">
+  
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="_id">
+        <th mat-header-cell *matHeaderCellDef class="bg-indigo-700 text-white text-base"> Id. </th>
+        <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="bg-indigo-700 text-white text-base"> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef class="bg-indigo-700 text-white text-base"> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef class="bg-indigo-700 text-white text-base"> Gender </th>
+        <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="mobile">
+        <th mat-header-cell *matHeaderCellDef class="bg-indigo-700 text-white text-base"> Phone </th>
+        <td mat-cell *matCellDef="let element"> {{element.mobile}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="bg-indigo-700 text-white text-base"> Actions </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button (click)="edit(element)">
+              <a [routerLink]="['/edit',element._id]">
+                <mat-icon aria-hidden="false" aria-label="Example edit icon">edit</mat-icon>
+              </a>
+          </button>
+          <button mat-icon-button (click)="delete(element._id)">
+                <mat-icon aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
+          </button>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <div class="flex justify-center bg-yellow-400 container w-40 mx-auto items-start rounded-md mt-10">
+      <a routerLink="/create">
+        <button mat-raised-button color="primary" class="w-full flex justify-center h-10 items-center">
+          <mat-icon>add</mat-icon>
+          <span>Add Student</span>
+        </button>
+      </a>
+  </div>
+  

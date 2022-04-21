@@ -1,0 +1,37 @@
+<div class="container mx-auto mt-4">
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit(studentForm)">
+        <div class="mb-4">
+            <label for="name" class="block text-sm font-medium">Your name
+                <input formControlName="name" type="name" id="name" class="border border-gray-300 text-sm rounded-lg  block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400" placeholder="John" required="">
+                <span *ngIf="studentForm.get('name').invalid && (studentForm.get('name').dirty || studentForm.get('name').touched)" class="text-red-500 font-base">
+                    Please provide a name.
+                </span>
+            </label>
+        </div>
+        <div class="mb-4">
+            <label for="email" class="block text-sm font-medium">Your email</label>
+            <input formControlName="email" type="email" id="email" class="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400" placeholder="abc@abc.com" required="">
+        </div>
+        <div class="mb-4">
+            <label for="gender" class="block text-sm font-medium">Gender </label>
+            <div class="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400">
+                <select [ngClass]="{'form-select': true, 'is-invalid': studentForm.get('gender')?.invalid &&
+                    (studentForm.get('gender')?.dirty || studentForm.get('gender')?.touched)}"
+                    aria-label="Default select example" formControlName="gender" class="w-full">
+                    <option value="">Select</option>
+                    <option value="male" selected="studentForm.get('gender')?.value=='male'">Male</option>
+                    <option value="female" selected="studentForm.get('gender')?.value=='female'">Female</option>
+                </select>
+                <span *ngIf="studentForm.get('name').invalid && (studentForm.get('name').dirty || studentForm.get('name').touched)" class="text-red-500 font-base">
+                    This field is required.
+                </span>
+            </div>
+        </div>
+        <div class="mb-4">
+            <label for="mobile" class="block text-sm font-medium">Your mobile</label>
+            <input formControlName="mobile" type="mobile" id="mobile" class="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400" placeholder="abc1234" required="">
+        </div>
+        <button type="submit" class=" bg-yellow-400 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
+    </form>
+</div>
+    
